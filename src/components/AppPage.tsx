@@ -3,7 +3,7 @@ import { Box, H1, v } from '@veracity/vui'
 
 interface Props {
   title?: string
-  children: ReactNode
+  children?: ReactNode
 }
 
 export const AppPage = (props: Props) => {
@@ -12,7 +12,7 @@ export const AppPage = (props: Props) => {
     <v.article>
       <>
         {!!title && <H1>{title}</H1>}
-        <Box mt={2}>{children}</Box>
+        {!!children && <Box mt={2}>{children}</Box>}
       </>
     </v.article>
   )

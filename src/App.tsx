@@ -1,8 +1,7 @@
-import { H1 } from '@veracity/vui'
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
-import { AppHeader, AppMain, AppFooter } from './components'
+import { AppHeader, AppMain, AppFooter, AppPage } from './components'
 
-import { DemoPage, HomePage } from './pages'
+import { DemoPage, HelpPage, HomePage } from './pages'
 
 export const App = () => (
   <BrowserRouter>
@@ -11,8 +10,9 @@ export const App = () => (
       <Routes>
         <Route path="home" element={<HomePage />} />
         <Route path="demo" element={<DemoPage />} />
+        <Route path="help" element={<HelpPage />} />
         <Route path="/" element={<Navigate to="home" replace />} />
-        <Route path="*" element={<H1>Page Not Found</H1>} />
+        <Route path="*" element={<AppPage title="Page Not Found" />} />
       </Routes>
     </AppMain>
     <AppFooter />
