@@ -1,15 +1,14 @@
 import { ReactNode } from 'react'
-import { Box } from '@veracity/vui'
+import { Box, v } from '@veracity/vui'
 
 interface Props {
   children: ReactNode
 }
 
-export const AppMain = (props: Props) => {
-  const { children } = props
-  return (
-    <main>
-      <Box p={4}>{children}</Box>
-    </main>
-  )
-}
+export const AppMain = ({ children }: Props) => (
+  <v.main flex="1">
+    <Box column maxW={1200} my={2} mx="auto" w="100%">
+      {children}
+    </Box>
+  </v.main>
+)
