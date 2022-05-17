@@ -1,3 +1,5 @@
+const apiUrl = 'http://localhost:3001/api'
+
 const appName = 'Demo Application'
 
 const mainLinks = [
@@ -6,5 +8,5 @@ const mainLinks = [
 ]
 
 export const useConfig = () => {
-  return { appName, mainLinks }
+  return { apiUrl, appName, mainLinks }
 }

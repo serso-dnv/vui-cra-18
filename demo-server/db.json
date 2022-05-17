@@ -1,0 +1,26 @@
+{
+    "profile": {
+        "profilePageUrl": "https://my.dnvgl.com/EditProfile",
+        "messagesUrl": "/my/messages",
+        "identity": "/my/profile",
+        "servicesUrl": "/my/services?page=0&pageSize=10",
+        "companiesUrl": "/my/companies",
+        "name": "User, Demo",
+        "email": "demo.user@example.com",
+        "id": "01f9047e-0000-0000-0000-42f3efd869a7",
+        "company": {
+            "identity": "/directory/companies/0797d654-0000-0000-0000-e2d6b3a67127",
+            "name": "Example Co.",
+            "id": "0797d654-0000-0000-0000-e2d6b3a67127",
+            "description": "Regular user"
+        },
+        "#companies": 1,
+        "verifiedEmail": true,
+        "verifiedPhone": false,
+        "firstName": "Demo",
+        "lastName": "User",
+        "countryCode": "PL",
+        "managedAccount": false,
+        "activated": true
+    }
+}
