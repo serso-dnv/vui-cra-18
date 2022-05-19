@@ -1,10 +1,10 @@
 {
     "profile": {
-        "profilePageUrl": "https://my.dnvgl.com/EditProfile",
-        "messagesUrl": "/my/messages",
-        "identity": "/my/profile",
-        "servicesUrl": "/my/services?page=0&pageSize=10",
-        "companiesUrl": "/my/companies",
+        "profilePageUrl": null,
+        "messagesUrl": null,
+        "identity": null,
+        "servicesUrl": null,
+        "companiesUrl": null,
         "name": "User, Demo",
         "email": "demo.user@example.com",
         "id": "01f9047e-0000-0000-0000-42f3efd869a7",

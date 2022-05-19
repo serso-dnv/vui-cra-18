@@ -9,7 +9,7 @@ import {
 } from '@veracity/vui'
 import { NavLink, useLocation } from 'react-router-dom'
 
-import { useConfig } from '../hooks'
+import { useConfig } from '../../hooks'
 
 export const AppHeader = () => {
   const { appName, mainLinks } = useConfig()

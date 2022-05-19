@@ -1,21 +1,19 @@
-import React from 'react'
+import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import { VuiProvider, LinksProvider } from '@veracity/vui'
 
 import { GlobalStyle } from './GlobalStyle'
 
+import { Providers } from './providers/Providers'
 import { App } from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <GlobalStyle />
-    <VuiProvider>
-      <LinksProvider>
-        <App />
-      </LinksProvider>
-    </VuiProvider>
-  </React.StrictMode>
+    <Providers>
+      <App />
+    </Providers>
+  </StrictMode>
 )
 
