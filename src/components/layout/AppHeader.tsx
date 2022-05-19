@@ -10,6 +10,13 @@ import {
 import { NavLink, useLocation } from 'react-router-dom'
 
 import { useConfig } from '../../hooks'
+import { ChildrenProps } from '../../types'
+
+export const AppName = ({ children }: ChildrenProps) => (
+  <T fontFamily="DNV Display,Verdana,Geneva,Tahoma,sans-serif" fontSize="20px">
+    {children}
+  </T>
+)
 
 export const AppHeader = () => {
   const { appName, mainLinks } = useConfig()
@@ -32,11 +39,7 @@ export const AppHeader = () => {
       <Header.Content>
         <Header.Logo />
         <Header.Divider mr={2} />
-        <T
-          fontFamily="DNV Display,Verdana,Geneva,Tahoma,sans-serif"
-          fontSize="20px">
-          {appName}
-        </T>
+        <AppName>{appName}</AppName>
         <Box ml="auto" />
         <RenderOnDesktop>
           <Header.MainLinks links={links} />

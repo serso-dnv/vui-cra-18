@@ -1,12 +1,8 @@
-import { ReactNode } from 'react'
 import { v } from '@veracity/vui'
 import { Container } from './Container'
+import { ChildrenProps } from '../../types'
 
-interface Props {
-  children: ReactNode
-}
-
-export const AppMain = ({ children }: Props) => (
+export const AppMain = ({ children }: ChildrenProps) => (
   <v.main flex="1">
     <Container>{children}</Container>
   </v.main>
