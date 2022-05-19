@@ -1,16 +1,24 @@
 import {
+  Box,
   T,
   Header,
+  HeaderSignIn,
+  HeaderCreateAccount,
   RenderOnDesktop,
   RenderOnMobile,
   IconButton,
-  List,
-  Box
+  List
 } from '@veracity/vui'
 import { NavLink, useLocation } from 'react-router-dom'
 
 import { useConfig } from '../../hooks'
 import { ChildrenProps } from '../../types'
+import { IconSpinner } from '../helpers/IconSpinner'
+
+interface Props {
+  isLoading: boolean
+  userProfile?: any
+}
 
 export const AppName = ({ children }: ChildrenProps) => (
   <T fontFamily="DNV Display,Verdana,Geneva,Tahoma,sans-serif" fontSize="20px">
@@ -18,11 +26,13 @@ export const AppName = ({ children }: ChildrenProps) => (
   </T>
 )
 
-export const AppHeader = () => {
+export const AppHeader = (props: Props) => {
+  const { isLoading, userProfile } = props
   const { appName, mainLinks } = useConfig()
   const { pathname } = useLocation()
 
   const links = mainLinks
+    ?.filter(link => userProfile || !link.authRequired)
     .map(link => ({ linkProps: { as: NavLink, to: link.to }, text: link.text }))
     .map(link => ({
       ...link,
@@ -30,8 +40,8 @@ export const AppHeader = () => {
     }))
 
   const userInfo = {
-    companyName: 'Veracity AS',
-    displayName: 'Doe, John'
+    companyName: userProfile?.company?.name,
+    displayName: userProfile?.name
   }
 
   return (
@@ -51,20 +61,30 @@ export const AppHeader = () => {
           href="/help"
           icon="falQuestionCircle"
         />
-        <Header.Account
-          sections={
-            <List isInteractive>
-              <List.Divider />
-              <List.Item
-                as="a"
-                href="/settings"
-                iconLeft="falCog"
-                text="Settings"
-              />
-            </List>
-          }
-          userInfo={userInfo}
-        />
+        {isLoading ? (
+          <IconSpinner />
+        ) : userProfile ? (
+          <Header.Account
+            sections={
+              <List isInteractive>
+                <List.Divider />
+                <List.Item
+                  as="a"
+                  href="/settings"
+                  iconLeft="falCog"
+                  text="Settings"
+                />
+              </List>
+            }
+            userInfo={userInfo}
+          />
+        ) : (
+          <>
+            <HeaderSignIn />
+            <HeaderCreateAccount />
+          </>
+        )}
+
         <RenderOnMobile>
           <Header.Divider ml={2} />
           <Header.MobileToggle />
