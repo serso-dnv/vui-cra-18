@@ -18,6 +18,9 @@ import { IconSpinner } from '../helpers/IconSpinner'
 interface Props {
   isLoading: boolean
   userProfile?: any
+  signInUrl?: string
+  signOutUrl?: string
+  signUpUrl?: string
 }
 
 export const AppName = ({ children }: ChildrenProps) => (
@@ -27,7 +30,7 @@ export const AppName = ({ children }: ChildrenProps) => (
 )
 
 export const AppHeader = (props: Props) => {
-  const { isLoading, userProfile } = props
+  const { isLoading, signInUrl, signOutUrl, signUpUrl, userProfile } = props
 
   const { pathname } = useLocation()
 
@@ -53,7 +56,10 @@ export const AppHeader = (props: Props) => {
           <Header.MainLinks links={links} />
           <Header.Divider ml={1} mr={2} />
         </RenderOnDesktop>
-        <IconButton as="a" colorScheme="prussian" href="/help" icon="falQuestionCircle" />
+        <NavLink to="/help">
+          <IconButton colorScheme="prussian" icon="falQuestionCircle" />
+        </NavLink>
+
         {isLoading ? (
           <Box ml={2}>
             <IconSpinner />
@@ -63,15 +69,15 @@ export const AppHeader = (props: Props) => {
             sections={
               <List isInteractive>
                 <List.Divider />
-                <List.Item as="a" href="/signout" iconLeft="falSignOut" text="Sign out" />
+                <List.Item as="a" href={signOutUrl} iconLeft="falSignOut" text="Sign out" />
               </List>
             }
             userInfo={userInfo}
           />
         ) : (
           <Box ml={2}>
-            <HeaderSignIn />
-            <HeaderCreateAccount />
+            <HeaderSignIn url={signInUrl} />
+            <HeaderCreateAccount url={signUpUrl} />
           </Box>
         )}
 
