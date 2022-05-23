@@ -1,7 +1,8 @@
+import { LinksProvider, VuiProvider } from '@veracity/vui'
 import { ReactNode } from 'react'
-import { VuiProvider, LinksProvider } from '@veracity/vui'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+
 import { isLocalhost } from '../utils'
 
 interface Props {

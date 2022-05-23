@@ -1,9 +1,8 @@
-import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
-import { AppHeader, AppMain, AppFooter, AppPage } from './components'
-
-import { DemoPage, HelpPage, HomePage } from './pages'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { useProfile } from './apiQueryHooks'
+import { AppFooter, AppHeader, AppMain, AppPage } from './components'
+import { DemoPage, HelpPage, HomePage } from './pages'
 import { isLoading } from './utils'
 
 export const App = () => {
@@ -13,11 +12,11 @@ export const App = () => {
       <AppHeader isLoading={isLoading(status)} userProfile={userProfile} />
       <AppMain>
         <Routes>
-          <Route path="home" element={<HomePage />} />
-          <Route path="demo" element={<DemoPage />} />
-          <Route path="help" element={<HelpPage />} />
-          <Route path="/" element={<Navigate to="home" replace />} />
-          <Route path="*" element={<AppPage title="Page Not Found" />} />
+          <Route element={<HomePage />} path="home" />
+          <Route element={<DemoPage />} path="demo" />
+          <Route element={<HelpPage />} path="help" />
+          <Route element={<Navigate replace to="home" />} path="/" />
+          <Route element={<AppPage title="Page Not Found" />} path="*" />
         </Routes>
       </AppMain>
       <AppFooter />
@@ -26,4 +25,3 @@ export const App = () => {
 }
 
 export default App
-

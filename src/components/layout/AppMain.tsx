@@ -1,6 +1,7 @@
 import { v } from '@veracity/vui'
-import { Container } from './Container'
+
 import { ChildrenProps } from '../../types'
+import { Container } from './Container'
 
 export const AppMain = ({ children }: ChildrenProps) => (
   <v.main flex="1">

@@ -1,5 +1,6 @@
-import { AppPage } from '../components'
 import { P } from '@veracity/vui'
+
+import { AppPage } from '../components'
 
 export const HomePage = () => (
   <AppPage title="Welcome!">

@@ -1,13 +1,13 @@
 import {
   Box,
-  T,
   Header,
-  HeaderSignIn,
   HeaderCreateAccount,
+  HeaderSignIn,
+  IconButton,
+  List,
   RenderOnDesktop,
   RenderOnMobile,
-  IconButton,
-  List
+  T
 } from '@veracity/vui'
 import { NavLink, useLocation } from 'react-router-dom'
 
@@ -53,12 +53,7 @@ export const AppHeader = (props: Props) => {
           <Header.MainLinks links={links} />
           <Header.Divider ml={1} mr={2} />
         </RenderOnDesktop>
-        <IconButton
-          as="a"
-          colorScheme="prussian"
-          href="/help"
-          icon="falQuestionCircle"
-        />
+        <IconButton as="a" colorScheme="prussian" href="/help" icon="falQuestionCircle" />
         {isLoading ? (
           <Box ml={2}>
             <IconSpinner />
@@ -68,12 +63,7 @@ export const AppHeader = (props: Props) => {
             sections={
               <List isInteractive>
                 <List.Divider />
-                <List.Item
-                  as="a"
-                  href="/signout"
-                  iconLeft="falSignOut"
-                  text="Sign out"
-                />
+                <List.Item as="a" href="/signout" iconLeft="falSignOut" text="Sign out" />
               </List>
             }
             userInfo={userInfo}

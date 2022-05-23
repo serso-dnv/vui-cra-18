@@ -1,4 +1,5 @@
 import { Box, H1, Panel, v } from '@veracity/vui'
+
 import { ChildrenProps } from '../../types'
 
 interface Props extends ChildrenProps {
