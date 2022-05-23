@@ -4,7 +4,7 @@ import { AppHeader, AppMain, AppFooter, AppPage } from './components'
 
 import { DemoPage, HelpPage, HomePage } from './pages'
 
-import { useProfile } from './api'
+import { useProfile } from './apiQueryHooks'
 import { isLoading } from './utils'
 
 export const App = () => {

@@ -11,7 +11,7 @@ import {
 } from '@veracity/vui'
 import { NavLink, useLocation } from 'react-router-dom'
 
-import { useConfig } from '../../hooks'
+import { appName, mainLinks } from '../../config'
 import { ChildrenProps } from '../../types'
 import { IconSpinner } from '../helpers/IconSpinner'
 
@@ -28,7 +28,7 @@ export const AppName = ({ children }: ChildrenProps) => (
 
 export const AppHeader = (props: Props) => {
   const { isLoading, userProfile } = props
-  const { appName, mainLinks } = useConfig()
+
   const { pathname } = useLocation()
 
   const links = mainLinks
@@ -47,8 +47,6 @@ export const AppHeader = (props: Props) => {
   return (
     <Header>
       <Header.Content>
-        <Header.Logo />
-        <Header.Divider mr={2} />
         <AppName>{appName}</AppName>
         <Box ml="auto" />
         <RenderOnDesktop>
@@ -60,6 +58,7 @@ export const AppHeader = (props: Props) => {
           colorScheme="prussian"
           href="/help"
           icon="falQuestionCircle"
+          mr={2}
         />
         {isLoading ? (
           <IconSpinner />
