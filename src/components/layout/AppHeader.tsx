@@ -58,10 +58,11 @@ export const AppHeader = (props: Props) => {
           colorScheme="prussian"
           href="/help"
           icon="falQuestionCircle"
-          mr={2}
         />
         {isLoading ? (
-          <IconSpinner />
+          <Box ml={2}>
+            <IconSpinner />
+          </Box>
         ) : userProfile ? (
           <Header.Account
             sections={
@@ -69,19 +70,19 @@ export const AppHeader = (props: Props) => {
                 <List.Divider />
                 <List.Item
                   as="a"
-                  href="/settings"
-                  iconLeft="falCog"
-                  text="Settings"
+                  href="/signout"
+                  iconLeft="falSignOut"
+                  text="Sign out"
                 />
               </List>
             }
             userInfo={userInfo}
           />
         ) : (
-          <>
+          <Box ml={2}>
             <HeaderSignIn />
             <HeaderCreateAccount />
-          </>
+          </Box>
         )}
 
         <RenderOnMobile>
