@@ -22,5 +22,12 @@
         "countryCode": "PL",
         "managedAccount": false,
         "activated": true
-    }
+    },
+    "projects": [
+        {
+            "id": "a18ddbc0-323c-4bd3-873f-a79ae734de50",
+            "name": "Demo project name",
+            "description": "Demo project description"
+        }
+    ]
 }

@@ -9,5 +9,5 @@ export const signOutUrl = '/signOut'
 export const mainLinks = [
   { to: '/home', text: 'Home', authRequired: false },
   { to: '/demo', text: 'Demo', authRequired: false },
-  { to: '/authenticated', text: 'Authenticated', authRequired: true }
+  { to: '/projects', text: 'Projects', authRequired: true }
 ]

@@ -12,3 +12,7 @@ Join [@veracity](https://www.npmjs.com/org/veracity) organization and generate a
 - Install dependencies `npm install`
 - Run the project `npm start`
 
+### Development server
+
+- Install [json-server](https://www.npmjs.com/package/json-server) globally: `npm install -g json-server`
+- Run a local server with mock data: `npm run server`

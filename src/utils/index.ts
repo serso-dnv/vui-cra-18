@@ -1,3 +1,4 @@
+export * from './restClient'
 export const isLocalhost = () => window.location.hostname === 'localhost'
 
 export const isLoading = (statusName: string) => statusName === 'loading'

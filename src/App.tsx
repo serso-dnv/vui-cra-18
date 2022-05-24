@@ -4,7 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { useProfile } from './apiQueryHooks'
 import { AppFooter, AppHeader, AppMain, AppPage } from './components'
 import { signInUrl, signOutUrl } from './config'
-import { DemoPage, HelpPage, HomePage } from './pages'
+import { DemoPage, HelpPage, HomePage, ProjectsPage } from './pages'
 import { isLoading } from './utils'
 
 export const App = () => {
@@ -24,6 +24,7 @@ export const App = () => {
         <Routes>
           <Route element={<HomePage />} path="home" />
           <Route element={<DemoPage />} path="demo" />
+          <Route element={<ProjectsPage />} path="projects" />
           <Route element={<HelpPage />} path="help" />
           <Route element={<Navigate replace to="home" />} path="/" />
           <Route element={<AppPage title="Page Not Found" />} path="*" />
