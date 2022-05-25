@@ -32,7 +32,11 @@ export const AppPage = ({ title, actionsSlot, children }: Props) => (
           </Grid>
         </Box>
 
-        {!!children && <Box mt={2}>{children}</Box>}
+        {!!children && (
+          <Box display="block" mt={2} w={1}>
+            {children}
+          </Box>
+        )}
       </>
     </v.article>
   </Panel>

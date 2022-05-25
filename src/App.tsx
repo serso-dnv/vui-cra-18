@@ -1,14 +1,14 @@
 import { useLinks, useLoadLinks } from '@veracity/vui'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
-import { useProfile } from './apiQueryHooks'
+import { useReadProfile } from './apiQueryHooks'
 import { AppFooter, AppHeader, AppMain, AppPage } from './components'
 import { signInUrl, signOutUrl } from './config'
-import { DemoPage, HelpPage, HomePage, ProjectsPage } from './pages'
+import { DemoPage, HelpPage, HomePage, ProjectPage, ProjectsPage } from './pages'
 import { isLoading } from './utils'
 
 export const App = () => {
-  const { data: userProfile, status } = useProfile()
+  const { data: userProfile, status } = useReadProfile()
   useLoadLinks('Prod', !!userProfile)
   const [links] = useLinks()
   return (
@@ -25,6 +25,8 @@ export const App = () => {
           <Route element={<HomePage />} path="home" />
           <Route element={<DemoPage />} path="demo" />
           <Route element={<ProjectsPage />} path="projects" />
+          <Route element={<ProjectPage />} path="projects/:id" />
+          <Route element={<ProjectPage />} path="projects" />
           <Route element={<HelpPage />} path="help" />
           <Route element={<Navigate replace to="home" />} path="/" />
           <Route element={<AppPage title="Page Not Found" />} path="*" />

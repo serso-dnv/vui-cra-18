@@ -1,51 +1,96 @@
 import { guid, useToggle } from '@veracity/ui-utils'
-import { Box, Button, Dialog, Input, P, T, Table } from '@veracity/vui'
+import { Box, Button, Dialog, IconButton, Input, Spinner, T, Table, Tbody, Td, Thead, Tr } from '@veracity/vui'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import { useProjectMutation, useProjects } from '../apiQueryHooks'
+import { useCreateProjectMutation, useDeleteProjectMutation, useReadProjects } from '../apiQueryHooks'
 import { AppPage } from '../components'
+import { Project } from '../types'
 
 export const ProjectsPage = () => {
-  const { data: projects } = useProjects()
+  const { data: projects, isLoading } = useReadProjects()
   const [isAddDialog, toggleIsAddDialog] = useToggle(false)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const postProject = useProjectMutation()
+  const createProject = useCreateProjectMutation()
+  const deleteProject = useDeleteProjectMutation()
 
   useEffect(() => {
     setName('')
     setDescription('')
   }, [isAddDialog])
 
-  const addProject = () => {
-    postProject.mutate({ id: guid(), name, description })
+  const onAddProject = () => {
+    createProject.mutate({ id: guid(), name, description })
     toggleIsAddDialog()
   }
+
+  const onDeleteProject = (id: string) => deleteProject.mutate(id)
 
   return (
     <AppPage
       actionsSlot={
-        <Button iconLeft="culPlusThin" onClick={toggleIsAddDialog}>
+        <Button
+          disabled={isLoading || createProject.isLoading || deleteProject.isLoading}
+          iconLeft="culPlusThin"
+          isLoading={createProject.isLoading}
+          onClick={toggleIsAddDialog}
+        >
           Add Project
         </Button>
       }
       title="Projects"
     >
-      <Table
-        columns={[
-          {
-            field: 'name',
-            isSortable: true,
-            title: 'Name'
-          },
-          {
-            field: 'description',
-            isSortable: false,
-            title: 'Description'
-          }
-        ]}
-        rows={projects}
-      />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Table
+          columns={[
+            {
+              field: 'name',
+              isSortable: false,
+              title: 'Name'
+            },
+            {
+              field: 'description',
+              isSortable: false,
+              title: 'Description'
+            },
+            {
+              field: '',
+              isSortable: false,
+              title: 'Actions'
+            }
+          ]}
+        >
+          <Thead />
+          <Tbody>
+            {projects?.map((project: Project) => (
+              <Tr key={project.id}>
+                <Td>
+                  <Link to={project.id}>{project.name}</Link>
+                </Td>
+                <Td>{project.description}</Td>
+                <Td w={80}>
+                  <Box gap={1}>
+                    <Link to={project.id}>
+                      <IconButton icon="falPen" size="sm" />
+                    </Link>
+
+                    <IconButton
+                      colorScheme="red"
+                      icon="falTrashAlt"
+                      onClick={() => onDeleteProject(project.id)}
+                      size="sm"
+                    />
+                  </Box>
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      )}
+
       <Dialog
         body={
           <Box display="block" px={3}>
@@ -58,7 +103,7 @@ export const ProjectsPage = () => {
         cancelButton={{ text: 'Cancel' }}
         isOpen={isAddDialog}
         onClose={toggleIsAddDialog}
-        submitButton={{ onClick: addProject, text: 'Add' }}
+        submitButton={{ onClick: onAddProject, text: 'Add' }}
         title="Add Project"
       />
     </AppPage>
