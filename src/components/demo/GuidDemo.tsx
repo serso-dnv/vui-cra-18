@@ -1,9 +1,20 @@
 import { copyToClipboard, guid, useToggle } from '@veracity/ui-utils'
 import { Box, Button, List, ListItem, Modal, useToast } from '@veracity/vui'
+import { useEffect, useReducer } from 'react'
 
 export const GuidDemo = () => {
   const [showModal, toggleModal] = useToggle(false)
   const { showSuccess } = useToast()
+
+  const [guids, dispatch] = useReducer((guids: string[], action: string[]) => action, [] as string[])
+
+  useEffect(() => {
+    dispatch(
+      Array(12)
+        .fill('')
+        .map(() => guid())
+    )
+  }, [])
 
   const copy = (text: string) => copyToClipboard(text).then(() => showSuccess(`Copied to the clipboard: ${text}`))
 
@@ -26,15 +37,12 @@ export const GuidDemo = () => {
         >
           <Box p={2}>
             <List>
-              {Array(10)
-                .fill('')
-                .map(() => guid())
-                .map(g => (
-                  <ListItem justifyContent="space-between" key={g}>
-                    {g}
-                    <Button icon="falCopy" onClick={() => copy(g)} size="sm" variant="text" />
-                  </ListItem>
-                ))}
+              {guids?.map(g => (
+                <ListItem justifyContent="space-between" key={g}>
+                  {g}
+                  <Button icon="falCopy" onClick={() => copy(g)} size="sm" variant="text" />
+                </ListItem>
+              ))}
             </List>
           </Box>
           <Button onClick={toggleModal}>OK</Button>
