@@ -1,13 +1,14 @@
 import { copyToClipboard, guid, useToggle } from '@veracity/ui-utils'
-import { Box, Button, List, ListItem, Modal, showSuccess } from '@veracity/vui'
+import { Box, Button, List, ListItem, Modal, useToast } from '@veracity/vui'
 
 export const GuidDemo = () => {
   const [showModal, toggleModal] = useToggle(false)
+  const { showSuccess } = useToast()
 
   const copy = (text: string) => copyToClipboard(text).then(() => showSuccess(`Copied to the clipboard: ${text}`))
 
   return (
-    <Box>
+    <Box my={3}>
       <Button onClick={toggleModal}>Generate GUIDs</Button>
       <Modal disableBackdropClose isOpen={showModal} onClose={toggleModal}>
         <Box

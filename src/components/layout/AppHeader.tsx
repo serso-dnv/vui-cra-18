@@ -5,6 +5,7 @@ import {
   HeaderSignIn,
   IconButton,
   List,
+  Logo,
   RenderOnDesktop,
   RenderOnMobile,
   T
@@ -50,6 +51,8 @@ export const AppHeader = (props: Props) => {
   return (
     <Header>
       <Header.Content>
+        <Logo brand="dnv" url="/" />
+        <Header.Divider mr={2} />
         <AppName>{appName}</AppName>
         <Box ml="auto" />
         <RenderOnDesktop>
