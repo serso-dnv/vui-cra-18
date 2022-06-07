@@ -1,4 +1,4 @@
-import { Box, Button, List, ListItem, Modal, useToast } from '@veracity/vui'
+import { Box, Button, useToast } from '@veracity/vui'
 
 const message = 'Lorem impsum'
 
