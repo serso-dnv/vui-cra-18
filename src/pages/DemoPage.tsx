@@ -1,5 +1,5 @@
 import { AppPage } from '../components'
-import { DialogsDemo, GuidDemo, MessagesDemo, ToastsDemo, TooltipsDemo } from '../components/demo'
+import { DialogsDemo, GuidDemo, MessagesDemo, ToastsDemo, TooltipsDemo, UtilsDemo } from '../components/demo'
 
 export const DemoPage = () => (
   <AppPage title="Demo">
@@ -8,5 +8,6 @@ export const DemoPage = () => (
     <DialogsDemo />
     <TooltipsDemo />
     <MessagesDemo />
+    <UtilsDemo />
   </AppPage>
 )
