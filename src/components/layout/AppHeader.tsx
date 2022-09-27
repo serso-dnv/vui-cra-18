@@ -6,8 +6,7 @@ import {
   IconButton,
   List,
   Logo,
-  RenderOnDesktop,
-  RenderOnMobile,
+  RenderOnScreen,
   T
 } from '@veracity/vui'
 import { NavLink, useLocation } from 'react-router-dom'
@@ -55,10 +54,10 @@ export const AppHeader = (props: Props) => {
         <Header.Divider mr={2} />
         <AppName>{appName}</AppName>
         <Box ml="auto" />
-        <RenderOnDesktop>
+        <RenderOnScreen minWidth="lg">
           <Header.MainLinks links={links} />
           <Header.Divider ml={1} mr={2} />
-        </RenderOnDesktop>
+        </RenderOnScreen>
         <NavLink to="/help">
           <IconButton colorScheme="prussian" icon="falQuestionCircle" />
         </NavLink>
@@ -84,13 +83,13 @@ export const AppHeader = (props: Props) => {
           </Box>
         )}
 
-        <RenderOnMobile>
+        <RenderOnScreen maxWidth="lg">
           <Header.Divider ml={2} />
           <Header.MobileToggle />
           <Header.MobileContent>
             <Header.MainLinks links={links} />
           </Header.MobileContent>
-        </RenderOnMobile>
+        </RenderOnScreen>
       </Header.Content>
     </Header>
   )
