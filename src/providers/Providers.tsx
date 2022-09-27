@@ -18,7 +18,7 @@ const queryClient = new QueryClient({
 export const Providers = ({ children }: Props) => (
   <QueryClientProvider client={queryClient}>
     {isLocalhost() && <ReactQueryDevtools />}
-    <VuiProvider>
+    <VuiProvider notifyOffline>
       <LinksProvider>{children}</LinksProvider>
     </VuiProvider>
   </QueryClientProvider>
