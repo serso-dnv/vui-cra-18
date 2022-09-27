@@ -1,5 +1,5 @@
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useToast } from '@veracity/vui'
-import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { Project } from '../types'
 import { del, get, isLocalhost, post } from '../utils'
@@ -8,10 +8,10 @@ const baseUrl = isLocalhost() ? 'http://localhost:3001' : ''
 
 import { defaultOptions } from './options'
 
-export const useReadProfile = () => useQuery<any>('profile', () => get(`${baseUrl}/api/profile`), defaultOptions)
+export const useReadProfile = () => useQuery<any>(['profile'], () => get(`${baseUrl}/api/profile`), defaultOptions)
 
-export const useReadProjects = () => useQuery<any>('projects', () => get(`${baseUrl}/api/projects`))
-export const useReadProject = (id: string) => useQuery<any>('project', () => get(`${baseUrl}/api/projects/${id}`))
+export const useReadProjects = () => useQuery<any>(['projects'], () => get(`${baseUrl}/api/projects`))
+export const useReadProject = (id: string) => useQuery<any>(['project'], () => get(`${baseUrl}/api/projects/${id}`))
 
 export const useCreateProjectMutation = () => {
   const queryClient = useQueryClient()
